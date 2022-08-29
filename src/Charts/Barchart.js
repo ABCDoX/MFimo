@@ -11,29 +11,20 @@ const Barchart = ({barchartid}) => {
         let x = am4core.create(barchartid, am4charts.XYChart);
          // Add data
          x.data = [{
-            "country": "USA",
-            "visits": 2025
+            "country": "Number of Applications",
+            "visits": 10
         }, {
-            "country": "China",
-            "visits": 1882
+            "country": "Number of Applications Sanction",
+            "visits": 15
         }, {
-            "country": "Japan",
-            "visits": 1809
+            "country": "Inprogresss Client",
+            "visits": 25
         }, {
-            "country": "Germany",
-            "visits": 1322
+            "country": "Disburced Application",
+            "visits": 14
         }, {
-            "country": "UK",
-            "visits": 1122
-        }, {
-            "country": "France",
-            "visits": 1114
-        }, {
-            "country": "India",
-            "visits": 984
-        }, {
-            "country": "Spain",
-            "visits": 711
+            "country": "Total rejected Application",
+            "visits": 0
         }];
 
         // Create axes
@@ -42,7 +33,7 @@ const Barchart = ({barchartid}) => {
         categoryAxis.dataFields.category = "country";
         categoryAxis.renderer.grid.template.location = 0;
         categoryAxis.renderer.minGridDistance = 30;
-
+        // categoryAxis.renderer.labels.template.rotation = 270;
         categoryAxis.renderer.labels.template.adapter.add("dy", function(dy, target) {
         if (target.dataItem && target.dataItem.index & 2 == 2) {
             return dy + 25;
@@ -59,6 +50,7 @@ const Barchart = ({barchartid}) => {
         series.name = "Visits";
         series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
         series.columns.template.fillOpacity = .8;
+        series.columns.template.width = am4core.percent(40);
 
         let columnTemplate = series.columns.template;
         columnTemplate.strokeWidth = 2;
@@ -71,7 +63,7 @@ const Barchart = ({barchartid}) => {
     useEffect(() => {
     },[])
   return (
-    <div id={barchartid} style={{ width: "100%", height: "300px" }}></div>
+    <div id={barchartid} style={{ width: "50%", height: "300px" }}></div>
   )
 }
 

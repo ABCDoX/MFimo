@@ -1,8 +1,12 @@
 import React from 'react'
-import logo from '../../images/logo.jpg';
+import logo from '../../Images/logo.jpg';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../reducers/user'
+
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
   return (
     <div><section className="vh-100" style={{backgroundColor:'white'}} >
     <div className="container py-5 h-100">
@@ -38,7 +42,11 @@ const Login = () => {
                     </div>
   
                     <div className="pt-1 mb-4">
-                      <button className="btn btn-dark btn-lg btn-block" type="button" onClick={() => {navigate('/dashboard')}}>Login</button>
+                      <button className="btn btn-dark btn-lg btn-block" type="button" onClick={() => {
+                        dispatch(login({ name : "Jayam", age : 10, email : "jayam@jayam.com"}));
+                        localStorage.setItem("login",true);
+                        navigate('/dashboard');
+                        }}>Login</button>
                     </div>
   
                     <a className="small text-muted" href="#!">Forgot password?</a>
