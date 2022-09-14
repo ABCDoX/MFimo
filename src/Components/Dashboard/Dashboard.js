@@ -29,7 +29,7 @@ const Dashboard = () => {
     {user.email}
     <Barchart barchartid="barchart1"/>
     <Barchart barchartid="barchart2"/>
-    
+    <Barchart barchartid="barchart3"/>
     {/* <Barchart id="chartdiv2"/> */}
     </>
     
